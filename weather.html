@@ -1,0 +1,126 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Eon Furnishy</title>
+    
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Eon Furnishy</h1>
+            </div>
+            <!-- <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item menu-list-item-active"><a href="index.html">HOME</a></li>
+                    <li class="menu-list-item"><a href="blogs.html">BLOGS</a></li>
+                    <li class="menu-list-item"><a href="contacts.html">CONTACT US</a></li>
+
+                </ul>
+            </div> -->
+            <div class="profile-container">
+                <a href="index.html"><img class="profile-picture" src="img/logo.jpg" alt=""></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="index.html"><i class="left-menu-icon fas fa-home"></i></a>
+        <a href="blogs.html"><i class="left-menu-icon fas fa-users"></i></a>
+        <a class="active" href="weather.html"><i class="left-menu-icon fas fa-cloud-sun"></i></a>
+        <a href="contacts.html"><i class="left-menu-icon fa fa-phone"></i></a>
+        </div>
+        <div class="weather-content">
+        <div class="mapHead" >Come Visit Us @</div>
+<div class="weather-items">
+        <div id="googleMap" >
+            <iframe
+        width="450px"
+        height="50%"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11530.786839854138!2d-79.246737!3d43.737627!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cf841a7f2f11%3A0xd1a627b60bc787b7!2sQuick%20Furniture!5e0!3m2!1sen!2sca!4v1617057501925!5m2!1sen!2sca" >
+        </iframe></div>
+        <div class="about">At Eon Furnishy our friendly and knowledgeable staff can answer any questions you may have and more importantly, they are there to ensure you leave with furniture pieces that you admire.
+            We have been serving Pickering and the surrounding communities for the past 16 years. We are dedicated to bringing you a variety of quality furniture items, from living and dining room sets, to bedroom suites and a plethora of accent pieces. You are sure to find the very best selection of quality and style in home furnishing with incredible value. Our 16,000 square foot showroom was recently expanded by an additional 20,000 square feet offering you the most current furniture designs.
+            <p> We provide collections ranging in style from traditional, contemporary, modern and transitional. You will find the most popular Canadian brands like, Décor-Rest, Palliser and Sealy. Not only do we offer a vast selection of furniture brands but we also have over 1,000 fabric and leather choices to select from. We can customize your furniture in the colour, configuration and fabric of your choice.
+            </p><p>Great design starts with the assistance of our design team.</p>
+            <p> They will help you find your style and will gladly schedule an in-home consultation, making your dream home a reality. Buying furniture can be overwhelming, but it doesn’t have to be. Our staff is available to bring clarity to your vision, so you can have furniture that fits your budget and personal style.
+            Come visit us at Eon Furnishy and see all that we have to offer!</p>
+            </div>
+        <div class="card">
+    
+    <div class="weather_loading">
+      <h2 class="city">Scarborough</h2>
+      <h1 class="temp">9°C</h1>
+      <div class="flex">
+        <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
+        <div class="description">Cloudy</div>
+      </div>
+	  
+      <div class="wind">Wind speed: 6.2 km/h</div>
+      <div class="humidity">Humidity: 60%</div>
+    </div>
+  </div>
+      
+
+</div>
+</div>
+<script>
+    let weather = {
+        apiKey: "4e8f8df6a8188cf75777403b5405bbc1",
+        fetchWeather: function (city) {
+          fetch(
+            "https://api.openweathermap.org/data/2.5/weather?q=" +
+              city +
+              "&units=metric&appid=" +
+              this.apiKey
+          )
+            .then((response) => {
+              if (!response.ok) {
+                alert("No weather found.");
+                throw new Error("No weather found.");
+              }
+              return response.json();
+            })
+            .then((data) => this.displayWeather(data));
+        },
+        displayWeather: function (data) {
+          const { name } = data;
+          const { icon, description } = data.weather[0];
+          const { temp, humidity } = data.main;
+          const { speed } = data.wind;
+          document.querySelector(".city").innerText = "" + name;
+          document.querySelector(".icon").src =
+            "https://openweathermap.org/img/wn/" + icon + ".png";
+          document.querySelector(".description").innerText = description;
+          document.querySelector(".temp").innerText = temp + "°C";
+          document.querySelector(".humidity").innerText =
+            "Humidity: " + humidity + "%";
+          document.querySelector(".wind").innerText =
+            "Wind speed: " + speed + " km/h";
+          document.querySelector(".weather").classList.remove("loading");
+          document.body.style.backgroundImage =
+            "url('https://source.unsplash.com/1600x900/?" + name + "')";
+        },
+        search: function () {
+          this.fetchWeather(document.querySelector(".search-bar").value);
+        },
+      };
+      
+      
+      
+      weather.fetchWeather("Toronto");
+    </script>
+
+</body>
+</html>

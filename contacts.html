@@ -1,0 +1,266 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Eon Furnishy</title>
+   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+<script src="js/jquery.validate.js"></script>
+        
+</head>
+<body>
+    
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Eon Furnishy</h1>
+            </div>
+            <!-- <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item menu-list-item-active"><a href="index.html">HOME</a></li>
+                    <li class="menu-list-item"><a href="blogs.html">BLOGS</a></li>
+                    <li class="menu-list-item"><a href="contacts.html">CONTACT US</a></li>
+
+                </ul>
+            </div> -->
+            <div class="profile-container">
+                <a href="index.html"><img class="profile-picture" src="img/logo.jpg" alt=""></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="index.html"><i class="left-menu-icon fas fa-home"></i></a>
+        <a href="blogs.html"><i class="left-menu-icon fas fa-users"></i></a>
+        <a href="weather.html"><i class="left-menu-icon fas fa-cloud-sun"></i></a>
+        <a class="active" href="contacts.html"><i class="left-menu-icon fa fa-phone"></i></a>
+        
+        </div>
+
+	
+<div class= "container" style="padding-left: 60px;">
+	<div class="contact_us_sec">
+		<h2 class= faq_title>Contact Us</h2>
+		<div class="contact_container">
+			<div class="comon_title_sec text-center">
+					<p>We are constantly improving our self to make sure 
+					we provide you excellent experience while you interact with us.We 
+					are always happy to hear from you and help you out in the best 
+					possible way.</p>
+			</div>
+			<div class="wrap_adrs_cont">
+
+				<div class="wrap_adrs">
+						<div class="adr_divider">
+							<i class="fa fa-map-marker"></i>
+							<p class="adrs_p">491 Brimley Rd Unit-6, Scarborough, ON M1J 1A4</p>
+						</div>
+						<div class="adr_divider">
+							<i class="fa fa-history"></i>
+							<p class="adrs_p">Mon - Sat 9:00 - 7:00 ( Sun - Closed )</p>
+						</div>
+						<div class="adr_divider">
+							<i class="fa fa-phone"></i>
+							<p class="adrs_p">: (+01) 321 546 9874</p>
+							
+						</div>
+						<div class="adr_divider">
+							<i class="fa fa-envelope"></i>
+							<p class="adrs_p">customer.care@eonfurnishy.com</p>
+							<p class="adrs_p">hr@eonfurnishy.com</p>
+						</div>  
+					</div>
+			</div>
+			<div class="wrap_cont_form">
+				<form class="cont_form" method="post" id="contactUsForm">
+						<div class="row">
+							<div class="wrap">
+								<input type="text" class="form-control input_fitness black" placeholder="Your Name" name="name" value="" maxlength="50">
+							</div>
+							<div class="wrap">
+								<input type="text" class="form-control input_fitness black" placeholder="Email" name="email" value="" maxlength="50">
+							</div>
+							<div class="wrap">
+								<input type="text" class="form-control input_fitness black cmn_cls" placeholder="Phone Number" name="mobile" value="" maxlength="10">
+							</div>
+						</div>
+						<div class="row">
+							<div class="wrap wrap_full">
+								<input type="text" class="form-control input_fitness black subject_inp cmn_cls" placeholder="Subject" name="subject" value="" maxlength="200">
+							</div>
+						</div>
+						<div class="row">
+							<div class="wrap wrap_full txt_wrap">
+								<textarea class="form-control input_fitness textarea_inp black cmn_cls" placeholder="Enter Your Query / Message . . ." name="message"></textarea>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group text-left">
+								<button type="button" class="btn_submit" > SUBMIT </button>
+							</div>
+						</div>
+					</form>
+			</div>
+		</div>
+	</div>
+		<!-- contact us main section -->
+	
+</div>
+<script>
+    $(window).scroll(function(event) {
+                /* Act on the event */
+                var scrollPos = $(window).scrollTop(),
+                header = $('header');
+                //sticky for menu
+                if(scrollPos > 300){
+                    header.addClass('sticky');
+                }else{
+                    header.removeClass('sticky');
+                }
+            });		
+            
+            var loginLink = $(".loginLink");
+            var signupLink = $(".signupLink");
+            var loginct = $( "#login-content" );
+            var signupct= $("#signup-content");
+            var loginWrap = $(".login-wrapper");
+            var overlay = $(".overlay");
+            loginWrap.each( function(){
+                $(this).wrap('<div class="overlay"></div>')
+            });
+            //pop up for login form
+            loginLink.on('click', function(event){
+                event.preventDefault();
+                loginct.parents(overlay).addClass("openform");
+                $(document).on('click', function(e){
+                var target = $(e.target);
+                if ($(target).hasClass("overlay")){
+                        $(target).find(loginct).each( function(){
+                            $(this).removeClass("openform");
+                        });
+                        setTimeout( function(){
+                            $(target).removeClass("openform");
+                        }, 350);
+                    }	
+                });
+            });
+            //pop up for signup form
+            signupLink.on('click', function(event){
+                event.preventDefault();
+                signupct.parents(overlay).addClass("openform");
+                $(document).on('click', function(e){
+                var target = $(e.target);
+                if ($(target).hasClass("overlay")){
+                        $(target).find(signupct).each( function(){
+                            $(this).removeClass("openform");
+                        });
+                        setTimeout( function(){
+                            $(target).removeClass("openform");
+                        }, 350);
+                    }	
+                });
+            });
+        var name_regex = /^[A-Z,a-z ]+$/;
+        var email_regex = /^.{1,}@.{2,}\..{2,}/;
+        var contact_no_regex = /^[\+\d]?(?:[\d-.\s()]*)$/;
+            
+        $.validator.addMethod(
+                "regex",
+            function(value, element, regexp) {
+                var re = new RegExp(regexp);
+                return this.optional(element) || re.test(value);
+            },
+                "Please enter in proper format."
+        );
+    
+        $('#contactUsForm').validate({
+            ignore:[],
+            rules:{
+                "name":{
+                    required:true,
+                    regex: name_regex,
+                    maxlength: 50
+                },
+                "email":{
+                    required:true,
+                    regex: email_regex,
+                    maxlength: 50
+                },
+                "mobile":{
+                    required:true,
+                    regex: contact_no_regex,
+                    digits:true,
+                    maxlength: 10,
+                    minlength:10
+                },
+                "subject":{
+                    required:true,
+                    maxlength: 200
+                },
+                "message":{
+                    required:true,
+                    maxlength: 2000
+                },
+            },
+            messages:{
+                "name":{
+                    required:"Please enter name!",
+                    regex: "Please enter valid name!",
+                    maxlength: "Name cannot exceed 50 characters!"
+                },
+                "email":{
+                    required:"Please enter email!",
+                    regex: "Pleasee enter valid email!",
+                    maxlength: "Email cannot exceed 50 characters!"
+                },
+                "mobile":{
+                    required:"Please enter phone number!",
+                    regex: "Please enter valid phone number!",
+                    digits:"Please enter valid phone number!",
+                    maxlength: "Phone number cannot exceed 10 digits!",
+                    minlength: "Phone number contains 10 digits!"
+                },
+                "subject":{
+                    required:"Please enter subject!",
+                    maxlength: "Subject cannot exceed 200 characters!"
+                },
+                "message":{
+                    required:"Please enter message!",
+                    maxlength: "Message connot exceed 20000 characters!"
+                },
+            },
+            submitHandler:function(form){
+                swal({
+                    title: "Thank you for contacting us. We will reach you within 24 hours!.",
+                    text: "",
+                    type: 'success',
+                    closeOnClickOutside: false,
+                    allowEscapeKey: false
+                },
+                function(isConfirm) {
+                    form.submit(); 
+                });
+            }
+        });
+            
+        $(document).ready(function() {
+            $(".btn_submit").click(function(){
+                $('#contactUsForm').submit();
+            });
+        });
+            
+            
+        </script>
+</body>
+</html>

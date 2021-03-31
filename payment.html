@@ -1,0 +1,141 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Eon Furnishy</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+			$(document).ready(function(){
+			$("#pay_btn").click(function(){
+				var name=$("#name_on_card").val();
+				var card_no=$("#card_number").val();
+				var expiry=$("#expiry").val();
+				var cvv=$("#cvv").val();
+				
+				var numeric_card_no= $.isNumeric(card_no);
+				var numeric_cvv= $.isNumeric(cvv);
+				
+				var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+				
+				var sub_1 = expiry.substring(0,2);
+				var sub_2 = expiry.substring(2);
+				
+				if(name=="" || !regName.test(name) ){
+					if(name=="")
+						$("#name_error").text("Enter name on card!");
+					else
+						$("#name_error").text("Provide both the first name and last name as on the card!");
+				}
+				
+				else if(card_no=="" || card_no.length!=16 || numeric_card_no==false){
+					$("#name_error").text("");
+					if(card_no==""){
+						$("#card_no_error").text("Enter card number!");
+					}
+					else if(numeric_card_no==false){
+						$("#card_no_error").text("Enter a valid numeric card number!");
+					}
+					else{
+						$("#card_no_error").text("Invalid card number digits!");
+					}
+				}
+				
+				else if(expiry=="" || !((sub_1.match(01)||sub_1.match(02)||sub_1.match(03)||sub_1.match(04)||sub_1.match(05)||sub_1.match(06)||sub_1.match(07)||sub_1.match(08)||sub_1.match(09)||sub_1.match(10)||sub_1.match(11)||sub_1.match(12) )&& (sub_2.match(21)||sub_2.match(22)||sub_2.match(23)||sub_2.match(24))) ){
+					$("#name_error").text("");
+					$("#card_no_error").text("");
+					
+					if(expiry=="")
+						$("#expiry_error").text("Enter expiry!");
+					
+					else 
+						$("#expiry_error").text("Invalid Expiry Date!");
+					
+				}
+				
+				else if(cvv==""||cvv.length!=3||numeric_cvv==false){
+					$("#name_error").text("");
+					$("#card_no_error").text("");
+					$("#expiry_error").text("");
+					if(cvv=="")
+						$("#cvv_error").text("Enter cvv!");
+					else if(numeric_cvv==false) 
+						$("#cvv_error").text("Enter valid numeric cvv!");
+					else
+						$("#cvv_error").text("Enter valid 3 digit cvv!");
+					
+					
+				}
+				else{
+					  $("#name_error").text("");
+					  $("#card_no_error").text("");
+					  $("#expiry_error").text("");
+					  $("#cvv_error").text("");
+					  $("form").submit();
+				}
+			});
+				});
+	</script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Eon Furnishy</h1>
+            </div>
+            <!-- <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item menu-list-item-active"><a href="index.html">HOME</a></li>
+                    <li class="menu-list-item"><a href="blogs.html">BLOGS</a></li>
+                    <li class="menu-list-item"><a href="contacts.html">CONTACT US</a></li>
+
+                </ul>
+            </div> -->
+            <div class="profile-container">
+                <a href="index.html"><img class="profile-picture" src="img/logo.jpg" alt=""></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="index.html"><i class="left-menu-icon fas fa-home"></i></a>
+        <a href="blogs.html"><i class="left-menu-icon fas fa-users"></i></a>
+        <a href="weather.html"><i class="left-menu-icon fas fa-cloud-sun"></i></a>
+		<a href="contacts.html"><i class="left-menu-icon fa fa-phone"></i></a>
+        
+        </div>
+<!--end of preloading-->
+<!--login form popup-->
+<div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/bgimg.jpg');height: 100%;">
+                <div class="payment"  style="padding-left:25%; ">
+	<div id="payment_div">
+		<h4 style="font-size: 30px;">Payment Information</h4><br>
+		<form id="payment_form" action="payment_successful.html">
+			<input id="name_on_card" type="text"  placeholder="Name on Card" ></input>
+			<p id="name_error" ><p>
+			<input id="card_number" type="text" placeholder="Card Number" ></input>
+			<p id="card_no_error" ><p>
+			<input id="expiry" type="text"  placeholder="MMYY" ></input>
+			<p id="expiry_error" ><p>
+			<input id="cvv" type="text" placeholder="CVV" ></input>
+			<p id="cvv_error" ><p><img src="img/visa.jpg"></img>&nbsp;<img src="img/mastercard.jpg"></img>&nbsp;<img src="img/amex.jpg"></img>
+			<input id="pay_btn" type="button" value="Finish and pay">
+		</form>
+	</div>			
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/plugins2.js"></script>
+<script src="js/custom.js"></script>	
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Eon Furnishy</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#payment_completed_h1").fadeIn(1000);	
+	
+			$("#payment_completed_img").slideToggle("slow",function(){
+				height: 'toggle'			
+			});
+		});
+		
+		</script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Eon Furnishy</h1>
+            </div>
+            <!-- <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item menu-list-item-active"><a href="index.html">HOME</a></li>
+                    <li class="menu-list-item"><a href="blogs.html">BLOGS</a></li>
+                    <li class="menu-list-item"><a href="contacts.html">CONTACT US</a></li>
+
+                </ul>
+            </div> -->
+            <div class="profile-container">
+                <a href="index.html"><img class="profile-picture" src="img/logo.jpg" alt=""></a>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="index.html"><i class="left-menu-icon fas fa-home"></i></a>
+        <a href="blogs.html"><i class="left-menu-icon fas fa-users"></i></a>
+        <a href="weather.html"><i class="left-menu-icon fas fa-cloud-sun"></i></a>
+        <a href="contacts.html"><i class="left-menu-icon fa fa-phone"></i></a>
+        
+        </div>
+<!--end of preloading-->
+<!--login form popup-->
+<div class="payment" style="background: linear-gradient(to top, rgba(0,0,0,0), #151515)">
+	<div id="payment_completed">
+		<h1 id="payment_completed_h1">Payment completed!</h1><br><br>
+		<img id="payment_completed_img" src="img/payment-completed.svg"></img>
+	</div>
+</div>
+	
+</body>
+
+</html>
